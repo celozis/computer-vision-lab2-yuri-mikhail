@@ -67,35 +67,8 @@ def point_transform(
     return result
 
 
-def swap_channels(image: RGBImage, first: int, second: int) -> RGBImage:
-    """Обменять два RGB-канала каждого пикселя."""
-    if first not in (0, 1, 2) or second not in (0, 1, 2):
-        raise ValueError('Неизвестные каналы.')
-    result = []
-    for row in image:
-        result_row = []
-        for pixel in row:
-            channels = [pixel[0], pixel[1], pixel[2]]
-            channels[first], channels[second] = (
-                channels[second], channels[first],
-            )
-            result_row.append((channels[0], channels[1], channels[2]))
-        result.append(result_row)
-    return result
-
-
-def mirror(image: RGBImage, horizontal: bool) -> RGBImage:
-    """horizontal=True: слева/справа; False: сверху/снизу."""
-    height, width = len(image), len(image[0])
-    result = []
-    for y in range(height):
-        row = []
-        for x in range(width):
-            source_x = width - 1 - x if horizontal else x
-            source_y = y if horizontal else height - 1 - y
-            row.append(image[source_y][source_x])
-        result.append(row)
-    return result
+# Урок 1: напиши здесь swap_channels(image, first, second)
+# и mirror(image, horizontal). См. learning/lessons/0001-image-as-data.html
 
 
 def blur(image: RGBImage, connectivity: int) -> RGBImage:
